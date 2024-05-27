@@ -1,33 +1,32 @@
 from main import ChatBot
 import streamlit as st
 
+# Create an instance of ChatBot
 bot = ChatBot()
-    
+
+# Set Streamlit page configuration
 st.set_page_config(page_title="Envio Chatbot")
+
+# Define the sidebar title
 with st.sidebar:
     st.title('Envio Chatbot')
 
+# Function to extract answer from the response text
 def extract_answer(text):
-    # Define the marker to split the text
     marker = "Answer:"
-    
-    # Find the index of the marker
     marker_index = text.find(marker)
-    
-    # If the marker is found, extract the text after the marker
     if marker_index != -1:
-        # Extract the text after the marker
         answer = text[marker_index + len(marker):].strip()
         return answer
     else:
-        # If the marker is not found, return an appropriate message
         return "No answer found."
-# Function for generating LLM response
+
+# Function to generate LLM response
 def generate_response(input):
     result = bot.rag_chain.invoke(input)
     return extract_answer(result)
 
-# Store LLM generated responses
+# Initialize chat messages in session state
 if "messages" not in st.session_state.keys():
     st.session_state.messages = [{"role": "assistant", "content": "Welcome, let's answer your question "}]
 
@@ -37,16 +36,19 @@ for message in st.session_state.messages:
         st.write(message["content"])
 
 # User-provided prompt
-if input := st.chat_input():
-    st.session_state.messages.append({"role": "user", "content": input})
-    with st.chat_message("user"):
-        st.write(input)
+user_input = st.text_input("Ask me anything:")
 
-# Generate a new response if last message is not from assistant
-if st.session_state.messages[-1]["role"] != "assistant":
-    with st.chat_message("assistant"):
-        with st.spinner("Getting your answer "):
-            response = generate_response(input) 
-            st.write(response) 
-    message = {"role": "assistant", "content": response}
-    st.session_state.messages.append(message)
+# Handle user input and generate response
+if user_input:
+    st.session_state.messages.append({"role": "user", "content": user_input})
+    with st.chat_message("user"):
+        st.write(user_input)
+
+    # Generate response if last message is not from assistant
+    if st.session_state.messages[-1]["role"] != "assistant":
+        with st.chat_message("assistant"):
+            with st.spinner("Getting your answer "):
+                response = generate_response(user_input) 
+                st.write(response) 
+        message = {"role": "assistant", "content": response}
+        st.session_state.messages.append(message)
