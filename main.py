@@ -71,6 +71,6 @@ class ChatBot():
 
 
 bot = ChatBot()
-input = input("Ask me anything: ")
-result = bot.rag_chain.invoke(input)
+u_input = input("Ask me anything: ")
+result = bot.rag_chain.invoke(u_input)
 print(result) 
