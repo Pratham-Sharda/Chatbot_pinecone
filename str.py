@@ -36,7 +36,7 @@ for message in st.session_state.messages:
         st.write(message["content"])
 
 # User-provided prompt
-user_input = st.text_input("Ask me anything:")
+user_input = st.chat_input("Ask me anything:")
 
 # Handle user input and generate response
 if user_input:
