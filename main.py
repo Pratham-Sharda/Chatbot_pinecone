@@ -20,7 +20,8 @@ class ChatBot():
     pinecone = PineconeClient(api_key=pinecone_api_key)
 
     index_name = "langchain-demo-2"
-
+    if index_name in pinecone.list_indexes().names():  
+        pinecone.delete_index(index_name)  
     if index_name not in pinecone.list_indexes().names():
         pinecone.create_index(
             name=index_name, 
@@ -32,8 +33,8 @@ class ChatBot():
             )
         )
         docsearch = Pinecone.from_documents(docs, embeddings, index_name=index_name)
-    else:
-        docsearch = Pinecone.from_existing_index(index_name, embeddings)
+    # else:
+    #     docsearch = Pinecone.from_existing_index(index_name, embeddings)
 
     huggingface_api_token = os.getenv('HUGGINGFACE_API_KEY')
 
