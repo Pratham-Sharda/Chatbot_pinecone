@@ -9,7 +9,7 @@ import os
 
 class ChatBot():
     load_dotenv()
-    loader = TextLoader('./daata2.txt')
+    loader = TextLoader('./pol.txt')
     documents = loader.load()
     text_splitter = CharacterTextSplitter(chunk_size=1000, chunk_overlap=4)
     docs = text_splitter.split_documents(documents)
