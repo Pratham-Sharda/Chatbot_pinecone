@@ -160,7 +160,7 @@ class ChatBot():
             'https://urbanemissions.info/blog-pieces/resources-how-to-access-aqdata-in-india/','https://urbanemissions.info/india-emissions-inventory/emissions-in-india-open-agricultural-forest-fires/']
     loader = UnstructuredURLLoader(urls=URL_L)
     documents = loader.load()
-    text_splitter = CharacterTextSplitter(chunk_size=2000, chunk_overlap=4)
+    text_splitter = CharacterTextSplitter(chunk_size=2000, chunk_overlap=200)
     docs = text_splitter.split_documents(documents)
 
     embeddings = HuggingFaceEmbeddings()
