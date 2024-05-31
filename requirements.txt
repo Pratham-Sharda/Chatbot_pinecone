@@ -4,3 +4,4 @@ langchain_community>=0.0.1
 pinecone-client>=2.0.0
 huggingface_hub>=0.4.0
 sentence-transformers>=2.1.0
+unstructured
