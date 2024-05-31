@@ -1,4 +1,4 @@
-from main import ChatBot
+from main_websiteurl import ChatBot
 import streamlit as st
 
 # Create an instance of ChatBot
