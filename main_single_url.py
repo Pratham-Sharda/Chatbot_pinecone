@@ -169,16 +169,16 @@ class ChatBot():
     from langchain import PromptTemplate
 
     template = """
-    You are an environmentalist. Answer the following question about the environment using the given context.
-
-    - For general questions, provide concise answers.
-    - If the question asks for elaboration or details, give a detailed and expanded answer.
-    - If the question requires listing items, answer in bullet points.
+    You are a expert in field of text data analysis. These Humans will ask you questions about the environment. Use the following piece of context to answer the question. 
+    You answer with precision in at least 5 line answer. .Always gives complete sentences and don't leave answers in form of incomplete sentences.
+    -You give answer in bullet points when asked to list 
+    -You give detailed answer everytime unless told to give answer in short
 
     Context: {context}
     Question: {question}
-    Answer:
+    Answer: 
     """
+
 
     prompt = PromptTemplate(template=template, input_variables=["context", "question"])
 
