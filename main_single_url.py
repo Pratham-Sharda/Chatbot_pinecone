@@ -169,8 +169,8 @@ class ChatBot():
     from langchain import PromptTemplate
 
     template = """
-    You are a expert in field of text data analysis. These Humans will ask you questions about the environment. Use the following piece of context to answer the question. 
-    You answer with precision in at least 5 line answer. 
+    You are a data expert in field of text data analysis. These Humans will ask you questions about the environment. Use the following piece of context to answer the question. 
+    You answer in at least 5 lines. 
 
     Context: {context}
     Question: {question}
