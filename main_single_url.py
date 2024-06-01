@@ -51,7 +51,7 @@ class ChatBot():
     
     loader = UnstructuredURLLoader(urls=all_extracted_urls)
     documents = loader.load()
-    text_splitter = CharacterTextSplitter(chunk_size=2000, chunk_overlap=200)
+    text_splitter = CharacterTextSplitter(chunk_size=2000, chunk_overlap=4)
     docs = text_splitter.split_documents(documents)
 
     embeddings = HuggingFaceEmbeddings()
@@ -91,8 +91,8 @@ class ChatBot():
     from langchain import PromptTemplate
 
     template = """
-    You are a data expert in field of text data analysis. These Human will ask you a questions about environment. Use following piece of context to answer the question. 
-    You answer with precision and don't unnecessarily expand the answer unless required.
+    You are a data expert in field of text data analysis. These Humans will ask you questions about the environment. Use the following piece of context to answer the question. 
+    You answer with precision in least number of complete sentences possible.Always gives complete sentences and don't leave answers in form of incomplete sentences.
 
 
     Context: {context}
