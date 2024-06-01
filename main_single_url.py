@@ -170,7 +170,7 @@ class ChatBot():
 
     template = """
     You are a data expert in field of text data analysis. These Humans will ask you questions about the environment. Use the following piece of context to answer the question. 
-    You answer in at least 5 lines. 
+    You answer like an expert and give detailed information about the question asked from the context.
 
     Context: {context}
     Question: {question}
