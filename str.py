@@ -101,22 +101,22 @@ def extract_answer(text):
         # If the marker is not found, return an appropriate message
         return "No answer found."
     
-def complete_sentence(text):
-    # Ensure the text ends with a complete sentence
-    end_punctuation = ['.', '!', '?']
-    if text[-1] not in end_punctuation:
-        last_punct_index = max(text.rfind(p) for p in end_punctuation)
-        if last_punct_index != -1:
-            return text[:last_punct_index + 1]
-    return text
+# def complete_sentence(text):
+#     # Ensure the text ends with a complete sentence
+#     end_punctuation = ['.', '!', '?']
+#     if text[-1] not in end_punctuation:
+#         last_punct_index = max(text.rfind(p) for p in end_punctuation)
+#         if last_punct_index != -1:
+#             return text[:last_punct_index + 1]
+#     return text
 
 # Function for generating LLM response
 def generate_response(input):
     result = bot.rag_chain_with_source.invoke(input)
     raw_answer = extract_answer(result['answer'])
-    answer = complete_sentence(raw_answer)  # Ensure the answer is complete
+    # answer = complete_sentence(raw_answer)  # Ensure the answer is complete
     sources = [doc.metadata['source'] for doc in result['context']]
-    return answer, sources
+    return raw_answer, sources
 
 
 # Store LLM generated responses
