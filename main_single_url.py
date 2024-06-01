@@ -170,9 +170,7 @@ class ChatBot():
 
     template = """
     You are a expert in field of text data analysis. These Humans will ask you questions about the environment. Use the following piece of context to answer the question. 
-    You answer with precision in at least 5 line answer. .Always gives complete sentences and don't leave answers in form of incomplete sentences.
-    -You give answer in bullet points when asked to list 
-    -You give detailed answer everytime unless told to give answer in short
+    You answer with precision in at least 5 line answer. 
 
     Context: {context}
     Question: {question}
