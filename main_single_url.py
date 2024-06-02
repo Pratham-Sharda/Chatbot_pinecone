@@ -163,7 +163,7 @@ class ChatBot():
     llm = HuggingFaceHub(
     repo_id=repo_id, 
     model_kwargs={"temperature": 0.8, "top_k": 50}, 
-    huggingfacehub_api_token=os.getenv('HUGGINGFACE_API_TOKEN')
+    huggingfacehub_api_token="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"
     )
 
     from langchain import PromptTemplate
