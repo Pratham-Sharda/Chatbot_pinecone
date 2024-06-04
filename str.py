@@ -54,7 +54,7 @@
 #         st.session_state.messages.append(message)
 
 import streamlit as st
-from main_single_url import ChatBot
+from vector_saved import ChatBot
 
 bot = ChatBot()
 
@@ -115,7 +115,7 @@ def generate_response(input):
     result = bot.rag_chain_with_source.invoke(input)
     raw_answer = extract_answer(result['answer'])
     # answer = complete_sentence(raw_answer)  # Ensure the answer is complete
-    sources = [doc.metadata['source'] for doc in result['context']]
+    sources = [doc.metadata['url'] for doc in result['context']]
     return raw_answer, sources
 
 
