@@ -57,7 +57,28 @@ import streamlit as st
 from vector_saved import ChatBot
 
 bot = ChatBot()
-
+def truncate_to_punctuation(s):
+    # Check if the string ends with a full stop, comma, colon, semicolon, or hyphen
+    if s.endswith(('.', ',', ':', ';', '-')):
+        return s
+    
+    # Find the nearest punctuation from the end
+    punctuations = ['.', ',', ':', ';', '-']
+    nearest_punctuation = -1
+    for p in punctuations:
+        pos = s.rfind(p)
+        if pos > nearest_punctuation:
+            nearest_punctuation = pos
+    
+    # If no punctuation is found, return an empty string
+    if nearest_punctuation == -1:
+        return ''
+    
+    # Return the string up to the nearest punctuation
+    a=s[:nearest_punctuation + 1]
+    a=a[:-1]
+    a=a+"."
+    return a
 st.set_page_config(page_title="Envio Chatbot")
 with st.sidebar:
     st.title('Envio Chatbot')
@@ -113,7 +134,7 @@ def extract_answer(text):
 # Function for generating LLM response
 def generate_response(input):
     result = bot.rag_chain_with_source.invoke(input)
-    raw_answer = extract_answer(result['answer'])
+    raw_answer = truncate_to_punctuation(extract_answer(result['answer']))
     # answer = complete_sentence(raw_answer)  # Ensure the answer is complete
     sources = [doc.metadata['url'] for doc in result['context']]
     return raw_answer, sources
