@@ -171,11 +171,11 @@ from langchain.text_splitter import CharacterTextSplitter
 # from langchain_community.embeddings import HuggingFaceEmbeddings
 from langchain_huggingface.embeddings import HuggingFaceEmbeddings
 from langchain_community.vectorstores import Pinecone
-from langchain.llms import HuggingFaceHub
+from langchain_community.llms import HuggingFaceHub
 from pinecone import Pinecone as PineconeClient, ServerlessSpec
 from dotenv import load_dotenv
 import os
-from langchain.document_loaders import UnstructuredURLLoader
+from langchain_community.document_loaders import UnstructuredURLLoader
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_groq import ChatGroq
 from langchain.schema.runnable import RunnablePassthrough
