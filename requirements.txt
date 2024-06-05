@@ -8,3 +8,4 @@ unstructured
 lxml
 bs4
 requests
+langchain-groq
