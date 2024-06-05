@@ -8,4 +8,5 @@ unstructured
 lxml
 bs4
 requests
-langchain-groq
+langchain_groq
+langchain-huggingface>=0.0.2
