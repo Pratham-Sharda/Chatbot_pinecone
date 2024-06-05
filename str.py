@@ -134,10 +134,10 @@ def extract_answer(text):
 # Function for generating LLM response
 def generate_response(input):
     result = bot.rag_chain_with_source.invoke(input)
-    raw_answer = truncate_to_punctuation(extract_answer(result['answer']))
+    # raw_answer = truncate_to_punctuation(extract_answer(result['answer']))
     # answer = complete_sentence(raw_answer)  # Ensure the answer is complete
     sources = [doc.metadata['url'] for doc in result['context']]
-    return raw_answer, sources
+    return result['answer'], sources
 
 
 # Store LLM generated responses
