@@ -87,7 +87,7 @@ with st.sidebar:
     sample_questions = ["Custom question",
         "What Do You understand by Apna Program",
         "What is polluting Delhi's air",
-        "Atmos is used for what purpose and also menton its latest version?",
+        "Atmos is used for what purpose ?",
         "Tell me about Vapis",
         "Are smog towers effective in reducing air pollution?",
         "What is climate change?",
