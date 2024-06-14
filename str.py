@@ -235,6 +235,7 @@ if input:
                 # Generate the response using the chatbot
                 try:
                     answer, sources = generate_response(input, history)
+                     st.session_state.messages.append({"role": "assistant", "content": answer})
                 except Exception as e:
                     st.write(f"Error: {e}")
                 else:
@@ -245,5 +246,5 @@ if input:
                             st.write(f"- {source}")
 
         # Append the assistant's response to the session state messages
-        st.session_state.messages.append({"role": "assistant", "content": answer})
+       
 
