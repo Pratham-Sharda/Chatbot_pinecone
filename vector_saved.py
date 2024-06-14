@@ -302,7 +302,7 @@ class ChatBot:
         self.llm = ChatGroq(
             temperature=0.1,
             model_name="llama3-8b-8192",
-            groq_api_key="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"
+            groq_api_key=os.getenv('GROQ_API_KEY')
         )
         self.memory = ConversationBufferWindowMemory(
             memory_key="chat_history",k=4,
